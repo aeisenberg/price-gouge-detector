@@ -180,7 +180,7 @@ export async function scrapeWeeklyDeals(): Promise<void> {
     throw new Error("No deals found. The page structure may have changed.");
   }
 
-  const outputPath = path.join(process.cwd(), "weekly-deals.json");
+  const outputPath = path.join(process.cwd(), "data", "weekly-deals.json");
   fs.writeFileSync(outputPath, JSON.stringify(deals, null, 2) + "\n");
   console.log(`Saved ${deals.length} deals to ${outputPath}`);
 

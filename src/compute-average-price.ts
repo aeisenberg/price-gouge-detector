@@ -63,8 +63,8 @@ function padRight(str: string, len: number): string {
 }
 
 export function computeAveragePrices(): void {
-  const dealsPath = path.join(process.cwd(), "weekly-deals.json");
-  const historyDir = path.join(process.cwd(), "price-history");
+  const dealsPath = path.join(process.cwd(), "data", "weekly-deals.json");
+  const historyDir = path.join(process.cwd(), "data", "price-history");
 
   const deals: WeeklyDeal[] = JSON.parse(fs.readFileSync(dealsPath, "utf-8"));
 
@@ -118,7 +118,7 @@ export function computeAveragePrices(): void {
           deal.canadianTireUrl = `https://www.canadiantire.ca${history.url}`;
         }
       }
-      deal.tirespyUrl = `https://tirespy.ca/en/product/${deal.productId}`;
+      deal.tirespyUrl = `https://tirespy.ca/product/${deal.productId}`;
 
       gouges.push(deal);
     }
@@ -159,4 +159,3 @@ export function computeAveragePrices(): void {
     `\nAugmented ${augmented} of ${deals.length} deals with average historical price.`
   );
 }
-

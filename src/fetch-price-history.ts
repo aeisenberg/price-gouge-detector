@@ -41,9 +41,9 @@ function delay(ms: number): Promise<void> {
 }
 
 export async function fetchPriceHistories(): Promise<void> {
-  const dealsPath = path.join(process.cwd(), "weekly-deals.json");
+  const dealsPath = path.join(process.cwd(), "data", "weekly-deals.json");
   const deals: WeeklyDeal[] = JSON.parse(fs.readFileSync(dealsPath, "utf-8"));
-  const outDir = path.join(process.cwd(), "price-history");
+  const outDir = path.join(process.cwd(), "data", "price-history");
 
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir, { recursive: true });
