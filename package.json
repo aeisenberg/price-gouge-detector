@@ -7,9 +7,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "npx tsx src/index.ts",
-    "scrape": "npx tsx -e \"import {scrapeWeeklyDeals} from './src/scrape-weekly-deals.js'; scrapeWeeklyDeals()\"",
-    "fetch-history": "npx tsx -e \"import {fetchPriceHistories} from './src/fetch-price-history.js'; fetchPriceHistories()\"",
-    "compute-averages": "npx tsx -e \"import {computeAveragePrices} from './src/compute-average-price.js'; computeAveragePrices()\"",
+    "scrape": "npx tsx -e \"import {scrapeWeeklyDeals} from './src/scrape-weekly-deals.ts'; scrapeWeeklyDeals()\"",
+    "fetch-history": "npx tsx -e \"import {fetchPriceHistories} from './src/fetch-price-history.ts'; fetchPriceHistories()\"",
+    "compute-averages": "npx tsx -e \"import {computeAveragePrices} from './src/compute-average-price.ts'; computeAveragePrices()\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
