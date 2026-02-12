@@ -1,0 +1,54 @@
+{
+  "code": "0430351P",
+  "title": "Ninja Slushi Professional Drink Maker with RapidChill Technology",
+  "manufacturer": "Ninja",
+  "categories": [
+    "DC0000636"
+  ],
+  "url": "/en/pdp/ninja-slushi-professional-drink-maker-with-rapidchill-technology-0430351p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/living/kitchen/kitchen-appliances/0430351/ninja-slushi-0a0886b6-9a30-493f-a998-0ea6c2f6ecff-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/living/kitchen/kitchen-appliances/0430351/ninja-slushi-professional-drink-maker-92e47f44-d750-447a-8a36-fe94bf2d5640-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "0430351",
+      "optionIds": [],
+      "model": "FS301C",
+      "priceHistory": [
+        {
+          "date": "2025-08-17T21:16:01.915729Z",
+          "price": 449.99
+        },
+        {
+          "date": "2025-10-17T05:30:10.363297Z",
+          "price": 399.99
+        },
+        {
+          "date": "2025-11-07T06:30:10.08946Z",
+          "price": 449.99
+        },
+        {
+          "date": "2025-11-27T07:30:10.391943Z",
+          "price": 299.99
+        },
+        {
+          "date": "2026-01-02T07:30:08.912268Z",
+          "price": 449.99
+        },
+        {
+          "date": "2026-01-16T07:30:10.909771Z",
+          "price": 299.99
+        },
+        {
+          "date": "2026-01-23T07:30:11.091638Z",
+          "price": 449.99
+        },
+        {
+          "date": "2026-02-06T07:30:13.347209Z",
+          "price": 399.99
+        }
+      ]
+    }
+  ]
+}

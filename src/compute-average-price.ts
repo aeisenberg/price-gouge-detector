@@ -1,0 +1,162 @@
+import * as fs from "fs";
+import * as path from "path";
+
+interface WeeklyDeal {
+  productName: string;
+  productId: string;
+  salePrice: number | null;
+  regularPrice: number | null;
+  averageHistoricalPrice?: number | null;
+  isPriceGouge?: boolean;
+  canadianTireUrl?: string;
+  tirespyUrl?: string;
+}
+
+interface PriceEntry {
+  date: string;
+  price: number;
+}
+
+interface Variant {
+  code: string;
+  priceHistory: PriceEntry[];
+}
+
+interface PriceHistoryFile {
+  code: string;
+  url?: string;
+  variants: Variant[];
+}
+
+/**
+ * Computes the time-weighted average price from a price history.
+ * Each entry marks the start of a period at that price, lasting until
+ * the next entry (or today for the last entry).
+ */
+function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
+  if (priceHistory.length === 0) return null;
+  if (priceHistory.length === 1) return priceHistory[0].price;
+
+  const sorted = [...priceHistory].sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
+  const now = new Date();
+  let totalWeightedPrice = 0;
+  let totalDays = 0;
+
+  for (let i = 0; i < sorted.length; i++) {
+    const start = new Date(sorted[i].date);
+    const end = i < sorted.length - 1 ? new Date(sorted[i + 1].date) : now;
+    const days = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+
+    totalWeightedPrice += sorted[i].price * days;
+    totalDays += days;
+  }
+
+  if (totalDays === 0) return sorted[0].price;
+  return Math.round((totalWeightedPrice / totalDays) * 100) / 100;
+}
+
+function padRight(str: string, len: number): string {
+  return str.length >= len ? str.substring(0, len) : str + " ".repeat(len - str.length);
+}
+
+export function computeAveragePrices(): void {
+  const dealsPath = path.join(process.cwd(), "weekly-deals.json");
+  const historyDir = path.join(process.cwd(), "price-history");
+
+  const deals: WeeklyDeal[] = JSON.parse(fs.readFileSync(dealsPath, "utf-8"));
+
+  let augmented = 0;
+
+  for (const deal of deals) {
+    const historyPath = path.join(historyDir, `${deal.productId}.json`);
+
+    if (!fs.existsSync(historyPath)) {
+      deal.averageHistoricalPrice = null;
+      continue;
+    }
+
+    const history: PriceHistoryFile = JSON.parse(
+      fs.readFileSync(historyPath, "utf-8")
+    );
+
+    if (history.variants.length === 0) {
+      deal.averageHistoricalPrice = null;
+      continue;
+    }
+
+    // Use the first variant's price history
+    const variant = history.variants[0];
+    const avg = computeTimeWeightedAverage(variant.priceHistory);
+    deal.averageHistoricalPrice = avg;
+
+    if (avg !== null) {
+      augmented++;
+    }
+  }
+
+  // Flag items where sale price is above average and print results
+  const gouges: WeeklyDeal[] = [];
+  for (const deal of deals) {
+    if (
+      deal.salePrice !== null &&
+      deal.averageHistoricalPrice !== null &&
+      deal.averageHistoricalPrice !== undefined &&
+      deal.salePrice > deal.averageHistoricalPrice
+    ) {
+      deal.isPriceGouge = true;
+
+      // Add URLs from price history file
+      const historyPath = path.join(historyDir, `${deal.productId}.json`);
+      if (fs.existsSync(historyPath)) {
+        const history: PriceHistoryFile = JSON.parse(
+          fs.readFileSync(historyPath, "utf-8")
+        );
+        if (history.url) {
+          deal.canadianTireUrl = `https://www.canadiantire.ca${history.url}`;
+        }
+      }
+      deal.tirespyUrl = `https://tirespy.ca/en/product/${deal.productId}`;
+
+      gouges.push(deal);
+    }
+  }
+
+  if (gouges.length > 0) {
+    console.log("⚠️  POTENTIAL PRICE GOUGES DETECTED");
+    console.log("═".repeat(90));
+    console.log(
+      padRight("Product", 45) +
+        padRight("ID", 12) +
+        padRight("Sale", 11) +
+        padRight("Avg", 11) +
+        "Diff"
+    );
+    console.log("─".repeat(90));
+
+    for (const deal of gouges) {
+      const diff = deal.salePrice! - deal.averageHistoricalPrice!;
+      console.log(
+        padRight(deal.productName.substring(0, 44), 45) +
+          padRight(deal.productId, 12) +
+          padRight(`$${deal.salePrice!.toFixed(2)}`, 11) +
+          padRight(`$${deal.averageHistoricalPrice!.toFixed(2)}`, 11) +
+          `+$${diff.toFixed(2)}`
+      );
+      console.log(`  CT:      ${deal.canadianTireUrl ?? "N/A"}`);
+      console.log(`  TireSpy: ${deal.tirespyUrl}`);
+    }
+    console.log("─".repeat(90));
+    console.log(`Found ${gouges.length} item(s) on "sale" above their historical average.\n`);
+  } else {
+    console.log("✅ No price gouges detected — all sale prices are below historical averages.\n");
+  }
+
+  fs.writeFileSync(dealsPath, JSON.stringify(deals, null, 2) + "\n");
+  console.log(
+    `\nAugmented ${augmented} of ${deals.length} deals with average historical price.`
+  );
+}
+

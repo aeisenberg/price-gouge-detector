@@ -1,0 +1,66 @@
+{
+  "code": "0294131P",
+  "title": "Rain-X ClearView - X-Treme Protection Windshield Washer Fluid, -50°C, 3.78-L",
+  "manufacturer": "Rain-X",
+  "categories": [
+    "DC0000355"
+  ],
+  "url": "/en/pdp/rain-x-clearview-x-treme-protection-windshield-washer-fluid-50-c-3-78-l-0294131p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/automotive/auto-maintenance/windshield-washer-fluid/0294131/rain-x-x-treme-protection-50-winter-windshield-washer-fluid-badad7ca-8f12-40df-8919-b1cac33b175c-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/automotive/auto-maintenance/windshield-washer-fluid/3999299/rainx-xt-50-4-pack-9c32c92c-9446-48bc-99a3-033bd68b0152-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "0294131",
+      "optionIds": [],
+      "model": "0294131",
+      "priceHistory": [
+        {
+          "date": "2025-02-07T10:56:02.412999Z",
+          "price": 7.49
+        },
+        {
+          "date": "2025-07-04T05:30:12.349355Z",
+          "price": 7.99
+        },
+        {
+          "date": "2025-09-12T05:30:10.527764Z",
+          "price": 7.19
+        },
+        {
+          "date": "2025-09-19T05:30:09.673757Z",
+          "price": 7.99
+        },
+        {
+          "date": "2025-10-10T05:30:09.250704Z",
+          "price": 7.19
+        },
+        {
+          "date": "2025-10-17T05:30:10.363297Z",
+          "price": 7.99
+        },
+        {
+          "date": "2025-11-07T06:30:10.08946Z",
+          "price": 7.19
+        },
+        {
+          "date": "2025-11-14T06:30:10.126208Z",
+          "price": 7.99
+        },
+        {
+          "date": "2025-11-21T14:39:59.584524Z",
+          "price": 7.19
+        },
+        {
+          "date": "2026-01-09T07:30:10.280568Z",
+          "price": 7.99
+        },
+        {
+          "date": "2026-02-06T07:30:13.347209Z",
+          "price": 7.19
+        }
+      ]
+    }
+  ]
+}

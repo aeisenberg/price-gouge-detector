@@ -1,0 +1,32 @@
+{
+  "name": "price-gouge-detector",
+  "version": "1.0.0",
+  "description": "Detects price gouging by comparing current Canadian Tire sale prices against historical data",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "npx tsx src/index.ts",
+    "scrape": "npx tsx -e \"import {scrapeWeeklyDeals} from './src/scrape-weekly-deals.js'; scrapeWeeklyDeals()\"",
+    "fetch-history": "npx tsx -e \"import {fetchPriceHistories} from './src/fetch-price-history.js'; fetchPriceHistories()\"",
+    "compute-averages": "npx tsx -e \"import {computeAveragePrices} from './src/compute-average-price.js'; computeAveragePrices()\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "price-gouging",
+    "canadian-tire",
+    "price-comparison"
+  ],
+  "author": "Andrew Eisenberg <andrew.eisenberg@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.2.3",
+    "eslint": "^9.39.2",
+    "playwright": "^1.58.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0"
+  }
+}

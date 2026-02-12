@@ -1,0 +1,118 @@
+{
+  "code": "0430391P",
+  "title": "Black & Decker Extra Wide Slots Toaster with 7 Settings, 4-Slices",
+  "manufacturer": "Black & Decker",
+  "categories": [
+    "DC0000667"
+  ],
+  "url": "/en/pdp/black-decker-extra-wide-slots-toaster-with-7-settings-4-slices-0430391p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/living/kitchen/kitchen-appliances/0430391/black-and-decker-4-slice-toaster-277ade3e-afd2-43c4-90f6-93f5a44f4399-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/living/kitchen/kitchen-appliances/0430391/black-and-decker-4-slice-toaster-d8a8f551-eb59-41b6-a9b8-2751a002b28b-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "0430391",
+      "optionIds": [],
+      "model": "TR7847-1BDC",
+      "priceHistory": [
+        {
+          "date": "2025-02-07T10:56:02.412999Z",
+          "price": 69.99
+        },
+        {
+          "date": "2025-02-21T12:02:56.535334Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-02-28T07:30:15.670401Z",
+          "price": 69.99
+        },
+        {
+          "date": "2025-04-04T05:30:13.987723Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-04-11T05:30:15.510612Z",
+          "price": 69.99
+        },
+        {
+          "date": "2025-04-08T23:25:14.228666Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-04-18T19:17:59.637105Z",
+          "price": 69.99
+        },
+        {
+          "date": "2025-06-20T05:30:11.525733Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-07-04T05:30:12.349355Z",
+          "price": 74.99
+        },
+        {
+          "date": "2025-07-25T05:30:11.926642Z",
+          "price": 44.99
+        },
+        {
+          "date": "2025-08-01T05:30:11.410628Z",
+          "price": 74.99
+        },
+        {
+          "date": "2025-08-29T05:30:11.576382Z",
+          "price": 44.99
+        },
+        {
+          "date": "2025-09-05T05:30:10.928803Z",
+          "price": 74.99
+        },
+        {
+          "date": "2025-10-17T05:30:10.363297Z",
+          "price": 44.99
+        },
+        {
+          "date": "2025-10-24T05:30:10.166341Z",
+          "price": 74.99
+        },
+        {
+          "date": "2025-11-14T06:30:10.126208Z",
+          "price": 44.99
+        },
+        {
+          "date": "2025-11-21T14:39:59.584524Z",
+          "price": 74.99
+        },
+        {
+          "date": "2025-12-04T07:30:11.567131Z",
+          "price": 44.99
+        },
+        {
+          "date": "2025-12-12T07:30:12.465833Z",
+          "price": 74.99
+        },
+        {
+          "date": "2025-12-28T07:30:10.615138Z",
+          "price": 44.99
+        },
+        {
+          "date": "2026-01-02T07:30:08.912268Z",
+          "price": 74.99
+        },
+        {
+          "date": "2026-01-16T07:30:10.909771Z",
+          "price": 39.99
+        },
+        {
+          "date": "2026-01-23T07:30:11.091638Z",
+          "price": 74.99
+        },
+        {
+          "date": "2026-02-06T07:30:13.347209Z",
+          "price": 39.99
+        }
+      ]
+    }
+  ]
+}

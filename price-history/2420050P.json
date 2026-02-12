@@ -1,0 +1,106 @@
+{
+  "code": "2420050P",
+  "title": "type A Clear Storage Tote with Wheels, 80-L",
+  "manufacturer": "TYPE A",
+  "categories": [
+    "DC0001424"
+  ],
+  "url": "/en/pdp/type-a-clear-storage-tote-with-wheels-80-l-2420050p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/living/home-organization/storage-solutions/2420050/type-a-80l-with-wheels-tote-clear-8175d802-0ae1-4d3e-8291-21bdf67afbf7-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/living/home-organization/storage-solutions/2420050/type-a-80l-with-wheels-tote-clear-353786cf-1ca6-4e24-ab09-5aae14dda230-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "2420050",
+      "optionIds": [],
+      "model": "80001A",
+      "priceHistory": [
+        {
+          "date": "2025-01-31T12:19:31.388567Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-02-07T10:56:02.412999Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-02-14T15:27:24.007296Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-02-21T12:02:56.535334Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-03-21T06:00:13.486002Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-03-28T06:00:12.380019Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-04-25T04:16:18.77737Z",
+          "price": 9.99
+        },
+        {
+          "date": "2025-05-02T05:00:09.329069Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-05-30T05:30:09.071316Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-07-04T05:30:12.349355Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-08-01T05:30:11.410628Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-08-22T05:30:09.222963Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-08-29T05:30:11.576382Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-09-19T05:30:09.673757Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-10-17T05:30:10.363297Z",
+          "price": 12.49
+        },
+        {
+          "date": "2025-10-31T05:30:12.356011Z",
+          "price": 19.99
+        },
+        {
+          "date": "2025-11-27T07:30:10.391943Z",
+          "price": 9.89
+        },
+        {
+          "date": "2025-12-11T07:30:10.075111Z",
+          "price": 19.99
+        },
+        {
+          "date": "2026-01-01T07:30:10.289683Z",
+          "price": 12.49
+        },
+        {
+          "date": "2026-01-23T07:30:11.091638Z",
+          "price": 19.99
+        },
+        {
+          "date": "2026-01-30T07:30:12.580302Z",
+          "price": 12.49
+        }
+      ]
+    }
+  ]
+}

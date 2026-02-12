@@ -1,0 +1,98 @@
+{
+  "code": "4992137P",
+  "title": "Bounty Select-A-Size Double Roll Paper Towel, 6-pk",
+  "manufacturer": "Bounty",
+  "categories": [
+    "DC0000964"
+  ],
+  "url": "/en/pdp/bounty-select-a-size-double-roll-paper-towel-6-pk-4992137p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/living/home-essentials/household-consumables/4992137/bounty-paper-towel-6-12-rolls-3e45ed40-a3a8-4032-a57f-ad15ba8172aa-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/living/home-essentials/household-consumables/4992137/bounty-paper-towel-6-12-rolls-647e5903-72a2-40b1-8ba6-3deb8a926144-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "4992137",
+      "optionIds": [],
+      "model": "003077215703",
+      "priceHistory": [
+        {
+          "date": "2025-03-07T07:00:14.526988Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-03-14T06:00:15.772204Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-04-18T05:30:18.66822Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-04-08T23:25:14.228666Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-04-18T19:17:59.637105Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-04-25T04:16:18.77737Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-05-30T05:30:09.071316Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-06-13T05:30:12.744253Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-07-11T05:30:08.773497Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-07-18T14:29:49.929794Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-08-22T05:30:09.222963Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-08-29T05:30:11.576382Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-10-03T05:30:12.91329Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-10-10T05:30:09.250704Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-11-14T06:30:10.126208Z",
+          "price": 12.99
+        },
+        {
+          "date": "2025-11-21T14:39:59.584524Z",
+          "price": 21.99
+        },
+        {
+          "date": "2025-12-28T07:30:10.615138Z",
+          "price": 12.99
+        },
+        {
+          "date": "2026-01-02T07:30:08.912268Z",
+          "price": 21.99
+        },
+        {
+          "date": "2026-02-06T07:30:13.347209Z",
+          "price": 12.99
+        }
+      ]
+    }
+  ]
+}

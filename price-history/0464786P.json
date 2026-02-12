@@ -1,0 +1,70 @@
+{
+  "code": "0464786P",
+  "title": "Graco Extend2Fit Convertible Car Seat, Rear-Facing Harness & Forward-Facing Hardness, Assorted",
+  "manufacturer": "Graco",
+  "categories": [
+    "DC0000699"
+  ],
+  "url": "/en/pdp/graco-extend2fit-convertible-car-seat-rear-facing-harness-forward-facing-hardness-assorted-0464786p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/automotive/car-care-accessories/child-travel-baby/0464786/graco-extend-2-fit-car-seat-7918679c-ffd8-4a39-a29b-7ee8f553f0d5-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/automotive/car-care-accessories/child-travel-baby/0464786/graco-extend-2-fit-car-seat-6048b14f-31bd-427a-9440-70944a7bf7ee-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "0464786",
+      "optionIds": [],
+      "model": "2013756",
+      "priceHistory": [
+        {
+          "date": "2025-01-24T11:34:40.279189Z",
+          "price": 389.99
+        },
+        {
+          "date": "2025-02-14T15:27:24.007296Z",
+          "price": 299.99
+        },
+        {
+          "date": "2025-03-07T07:00:14.526988Z",
+          "price": 389.99
+        },
+        {
+          "date": "2025-04-25T04:16:18.77737Z",
+          "price": 419.99
+        },
+        {
+          "date": "2025-05-08T13:35:36.14985Z",
+          "price": 349.99
+        },
+        {
+          "date": "2025-06-13T05:30:12.744253Z",
+          "price": 419.99
+        },
+        {
+          "date": "2025-08-01T05:30:11.410628Z",
+          "price": 349.99
+        },
+        {
+          "date": "2025-08-29T05:30:11.576382Z",
+          "price": 419.99
+        },
+        {
+          "date": "2025-11-27T07:30:10.391943Z",
+          "price": 299.99
+        },
+        {
+          "date": "2025-12-30T07:30:11.059774Z",
+          "price": 419.99
+        },
+        {
+          "date": "2026-01-06T07:30:10.475783Z",
+          "price": 439.99
+        },
+        {
+          "date": "2026-01-16T07:30:10.909771Z",
+          "price": 299.99
+        }
+      ]
+    }
+  ]
+}

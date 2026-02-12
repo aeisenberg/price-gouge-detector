@@ -1,0 +1,107 @@
+{
+  "code": "0289204P",
+  "title": "Castrol GTX ULTRACLEAN 5W30 Conventional Engine/Motor Oil, 5-L",
+  "manufacturer": "Castrol",
+  "categories": [
+    "DC0000376",
+    "DC0000377"
+  ],
+  "url": "/en/pdp/castrol-gtx-ultraclean-5w30-conventional-engine-motor-oil-5-l-0289204p.html",
+  "images": [
+    "https://media-www.canadiantire.ca/product/automotive/auto-maintenance/oil-pcmo-/0289204/castrol-5w30-motor-oil-jug-e6c0fa2d-f359-4a83-92c6-e154a11bdbc9-jpgrendition.jpg",
+    "https://media-www.canadiantire.ca/product/automotive/auto-maintenance/oil-pcmo-/0289204/castrol-5w30-motor-oil-jug-28afef28-5f09-4f83-b653-ca4f27972f55-jpgrendition.jpg"
+  ],
+  "variants": [
+    {
+      "code": "0289204",
+      "optionIds": [],
+      "model": "00011-3A",
+      "priceHistory": [
+        {
+          "date": "2025-01-31T12:19:31.388567Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-02-07T10:56:02.412999Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-03-14T06:00:15.772204Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-03-21T06:00:13.486002Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-04-25T04:16:18.77737Z",
+          "price": 29.88
+        },
+        {
+          "date": "2025-05-02T05:00:09.329069Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-05-23T05:30:11.889176Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-07-04T05:30:12.349355Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-07-18T14:29:49.929794Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-07-25T05:30:11.926642Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-08-22T05:30:09.222963Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-09-12T05:30:10.527764Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-10-03T05:30:12.91329Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-10-10T05:30:09.250704Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-11-07T06:30:10.08946Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-11-21T14:39:59.584524Z",
+          "price": 39.99
+        },
+        {
+          "date": "2025-12-04T07:30:11.567131Z",
+          "price": 29.99
+        },
+        {
+          "date": "2025-12-30T07:30:11.059774Z",
+          "price": 39.99
+        },
+        {
+          "date": "2026-01-16T07:30:10.909771Z",
+          "price": 29.99
+        },
+        {
+          "date": "2026-01-23T07:30:11.091638Z",
+          "price": 39.99
+        },
+        {
+          "date": "2026-01-30T07:30:12.580302Z",
+          "price": 29.99
+        }
+      ]
+    }
+  ]
+}

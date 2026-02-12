@@ -1,0 +1,355 @@
+[
+  {
+    "productName": "Ninja Slushi Professional Drink Maker with RapidChill Technology",
+    "productId": "0430351P",
+    "salePrice": 399.99,
+    "regularPrice": 449.99,
+    "averageHistoricalPrice": 406.27
+  },
+  {
+    "productName": "Mastercraft Heavy Duty Stackable Storage Box with Lid, 102-L, Black/Blue",
+    "productId": "1426045P",
+    "salePrice": 14.99,
+    "regularPrice": 24.99,
+    "averageHistoricalPrice": 20.69
+  },
+  {
+    "productName": "Graco Extend2Fit Convertible Car Seat – Safely Grows with Child from Rear-Facing to Forward-Facing, 1.8-30 kg (4-65 lb), Gotham",
+    "productId": "0464786P",
+    "salePrice": 299.99,
+    "regularPrice": 439.99,
+    "averageHistoricalPrice": 378.23
+  },
+  {
+    "productName": "Mastercraft CSA Grade 1 Aluminum Multi-Task Ladder, 21-ft, 250-lb",
+    "productId": "0613015P",
+    "salePrice": 210.99,
+    "regularPrice": 359.99,
+    "averageHistoricalPrice": 279.97
+  },
+  {
+    "productName": "NOMA A19 E26 Base Dimmable LED Light Bulbs, 800 Lumens, Warm White, 60W, 2-pk",
+    "productId": "0529345P",
+    "salePrice": 6.99,
+    "regularPrice": 12.99,
+    "averageHistoricalPrice": 11.04
+  },
+  {
+    "productName": "ProForm Carbon Folding Treadmill, iFIT® Enabled",
+    "productId": "1841654P",
+    "salePrice": 699.99,
+    "regularPrice": 1099.99,
+    "averageHistoricalPrice": 960.55
+  },
+  {
+    "productName": "MAXIMUM Adjustable 4-Shelf Heavy Duty Steel Metal Storage Rack / Shelving Unit, 77 x 24 x 72-in",
+    "productId": "0687066P",
+    "salePrice": 229.99,
+    "regularPrice": 269.99,
+    "averageHistoricalPrice": 270.09
+  },
+  {
+    "productName": "Mastercraft 72\" Diamond Series 2-Door, 6-Drawer Wooden Top Work Station with Wheels, 72 x 20 x 37.5-in",
+    "productId": "0687305P",
+    "salePrice": 539.99,
+    "regularPrice": 849.99,
+    "averageHistoricalPrice": 716.63
+  },
+  {
+    "productName": "Heritage The Rock Copper Essentials Cookware Set, Non-Stick, Dishwasher & Oven Safe, 10-pc",
+    "productId": "1425500P",
+    "salePrice": 99.99,
+    "regularPrice": 149.99,
+    "averageHistoricalPrice": 131.29
+  },
+  {
+    "productName": "type A Stackable Storage Box with Lid, 63-L",
+    "productId": "0424608P",
+    "salePrice": 6.49,
+    "regularPrice": 10.99,
+    "averageHistoricalPrice": 9.44
+  },
+  {
+    "productName": "Mastercraft Clear Heavy-Duty Storage Tote with Snap-Lock Lid, 102-L",
+    "productId": "1427600P",
+    "salePrice": 19.99,
+    "regularPrice": 29.99,
+    "averageHistoricalPrice": 25.74
+  },
+  {
+    "productName": "Rain-X ClearView - X-Treme Protection Windshield Washer Fluid, -50°C, 3.78-L",
+    "productId": "0294131P",
+    "salePrice": 7.99,
+    "regularPrice": 8.99,
+    "averageHistoricalPrice": 7.63,
+    "isPriceGouge": true,
+    "canadianTireUrl": "https://www.canadiantire.ca/en/pdp/rain-x-clearview-x-treme-protection-windshield-washer-fluid-50-c-3-78-l-0294131p.html",
+    "tirespyUrl": "https://tirespy.ca/en/product/0294131P"
+  },
+  {
+    "productName": "type A Clear Storage Tote with Wheels, 80-L",
+    "productId": "2420050P",
+    "salePrice": 12.49,
+    "regularPrice": 19.99,
+    "averageHistoricalPrice": 16.51
+  },
+  {
+    "productName": "Mastercraft Heavy Duty Stackable Storage Box with Lid, 45-L, Black/Blue",
+    "productId": "1429648P",
+    "salePrice": 9.99,
+    "regularPrice": 15.99,
+    "averageHistoricalPrice": 13.81
+  },
+  {
+    "productName": "MotoMaster Eliminator Booster Pack with Air Compressor, 1000A",
+    "productId": "0112058P",
+    "salePrice": 159.99,
+    "regularPrice": 219.99,
+    "averageHistoricalPrice": 189.21
+  },
+  {
+    "productName": "Vida by Paderno Bamboo Cutting Board, Non-Slip, 12-in x 18-in",
+    "productId": "1428365P",
+    "salePrice": 12.99,
+    "regularPrice": 25.99,
+    "averageHistoricalPrice": 20.16
+  },
+  {
+    "productName": "Mastercraft 5-Shelf Resin/ Plastic Storage Rack/ Shelving Unit, 36 x 18 x 72-in",
+    "productId": "0680314P",
+    "salePrice": 39.99,
+    "regularPrice": 59.99,
+    "averageHistoricalPrice": 50.81
+  },
+  {
+    "productName": "Shark Rocket™ Lightweight Corded Stick Vacuum Cleaner",
+    "productId": "0436795P",
+    "salePrice": 149.99,
+    "regularPrice": 229.99,
+    "averageHistoricalPrice": 192.32
+  },
+  {
+    "productName": "Instant Pot Duo V5 with 14 Smart Programs, 6-qt",
+    "productId": "0430121P",
+    "salePrice": 99.99,
+    "regularPrice": 159.99,
+    "averageHistoricalPrice": 135.26
+  },
+  {
+    "productName": "BISSELL Little Green™ Portable Deep Cleaner",
+    "productId": "0437132P",
+    "salePrice": 89.99,
+    "regularPrice": 134.99,
+    "averageHistoricalPrice": 112.39
+  },
+  {
+    "productName": "Mastercraft Heavy Duty Stackable Storage Box with Lid, 70-L, Black/Blue",
+    "productId": "1422822P",
+    "salePrice": 12.99,
+    "regularPrice": 21.99,
+    "averageHistoricalPrice": 18.62
+  },
+  {
+    "productName": "Black & Decker BDC120VACA 20V Cordless Drill with Battery, Charger & 100-pc Accessory Set, 3/8-in",
+    "productId": "0543199P",
+    "salePrice": 69.99,
+    "regularPrice": 144.99,
+    "averageHistoricalPrice": 107.43
+  },
+  {
+    "productName": "Energizer Max Alkaline AA Batteries, 36-pk",
+    "productId": "0653168P",
+    "salePrice": 19.99,
+    "regularPrice": 28.99,
+    "averageHistoricalPrice": 24.49
+  },
+  {
+    "productName": "Castrol EDGE 5W30 Advanced Synthetic Engine/Motor Oil, 5-L",
+    "productId": "0289212P",
+    "salePrice": 42.17,
+    "regularPrice": 57.99,
+    "averageHistoricalPrice": 48.48
+  },
+  {
+    "productName": "Moffat G650SDE-30 3000 W / 240 V 182-L Top-Entry Electric Water Heater, Metallic",
+    "productId": "0630338P",
+    "salePrice": 599.99,
+    "regularPrice": 699.99,
+    "averageHistoricalPrice": 642.72
+  },
+  {
+    "productName": "MAXIMUM Tool Storage Cabinet, Built-In Power Bar with USB, 9-Drawer, 56-in, Matte Black",
+    "productId": "0582528P",
+    "salePrice": 799.99,
+    "regularPrice": 999.99,
+    "averageHistoricalPrice": 929.07
+  },
+  {
+    "productName": "Mastercraft 8-Gallon Oil-Free Portable Air Compressor, 150 PSI, 1.5 HP",
+    "productId": "0589316P",
+    "salePrice": 179.99,
+    "regularPrice": 299.99,
+    "averageHistoricalPrice": 247.04
+  },
+  {
+    "productName": "Old Dutch Absolute Clean Liquid Laundry Detergent, Summer Fresh Scent, 6-L",
+    "productId": "1530319P",
+    "salePrice": 8,
+    "regularPrice": 11.99,
+    "averageHistoricalPrice": 10.49
+  },
+  {
+    "productName": "NOMA A19 E26 Base Dimmable LED Light Bulbs, 5000K, 800 Lumens, Daylight, 60W, 2-pk",
+    "productId": "0529346P",
+    "salePrice": 6.99,
+    "regularPrice": 12.99,
+    "averageHistoricalPrice": 11.04
+  },
+  {
+    "productName": "Energizer Max Alkaline AAA Batteries, 24-pk",
+    "productId": "0653167P",
+    "salePrice": 19.99,
+    "regularPrice": 28.99,
+    "averageHistoricalPrice": 24.43
+  },
+  {
+    "productName": "Scotties House & Home Facial Tissue, 2-Ply, 100 Sheets, 12-pk",
+    "productId": "1530405P",
+    "salePrice": 10.99,
+    "regularPrice": 19.99,
+    "averageHistoricalPrice": 17.91
+  },
+  {
+    "productName": "Castrol GTX ULTRACLEAN 5W30 Conventional Engine/Motor Oil, 5-L",
+    "productId": "0289204P",
+    "salePrice": 29.99,
+    "regularPrice": 39.99,
+    "averageHistoricalPrice": 35.8
+  },
+  {
+    "productName": "Hoover ONEPWR Emerge Tangle Guard Cordless Stick Vacuum",
+    "productId": "0437216P",
+    "salePrice": 279.99,
+    "regularPrice": 449.99,
+    "averageHistoricalPrice": 376.84
+  },
+  {
+    "productName": "Charmin Ultra Soft Quadruple Roll Bathroom Toilet Paper, 2-Ply Tissue, 12-pk",
+    "productId": "4992138P",
+    "salePrice": 12.99,
+    "regularPrice": null,
+    "averageHistoricalPrice": 20.88
+  },
+  {
+    "productName": "Bounty Select-A-Size Double Roll Paper Towel, 6-pk",
+    "productId": "4992137P",
+    "salePrice": 12.99,
+    "regularPrice": null,
+    "averageHistoricalPrice": 20.21
+  },
+  {
+    "productName": "Charmin Ultra Strong Quadruple Roll Bathroom Toilet Paper, 2-Ply Tissue, 12-pk",
+    "productId": "4992139P",
+    "salePrice": 12.99,
+    "regularPrice": null,
+    "averageHistoricalPrice": 20.68
+  },
+  {
+    "productName": "type A Stackable Storage Box with Lid, 72-L, Blue",
+    "productId": "1422841P",
+    "salePrice": 8.99,
+    "regularPrice": 14.99,
+    "averageHistoricalPrice": 12.37
+  },
+  {
+    "productName": "Yardworks 65558 5-Ton 1-3/4 HP Duo Cut Electric Log Splitter",
+    "productId": "0603895P",
+    "salePrice": 349.99,
+    "regularPrice": 469.99,
+    "averageHistoricalPrice": 432.44
+  },
+  {
+    "productName": "Quaker State Full Synthetic 5W20 Engine/Motor Oil, 5-L",
+    "productId": "0289043P",
+    "salePrice": 36.99,
+    "regularPrice": 47.99,
+    "averageHistoricalPrice": 46.1
+  },
+  {
+    "productName": "simplicité Regular 4-Flap Ties Outdoor Garbage Bags, 40-pk, Black, 74-L",
+    "productId": "0429720P",
+    "salePrice": 5.79,
+    "regularPrice": 8.99,
+    "averageHistoricalPrice": 7.54
+  },
+  {
+    "productName": "Black & Decker Extra Wide Slots Toaster with 7 Settings, 4-Slices",
+    "productId": "0430391P",
+    "salePrice": 39.99,
+    "regularPrice": 74.99,
+    "averageHistoricalPrice": 66.17
+  },
+  {
+    "productName": "Apex Fit Plus Smart Watch with Bluetooth Call",
+    "productId": "0356237P",
+    "salePrice": 29.99,
+    "regularPrice": 79.99,
+    "averageHistoricalPrice": 63.21
+  },
+  {
+    "productName": "Michelin X-Ice® SNOW Winter Tire For Passenger & CUV",
+    "productId": "0052089P",
+    "salePrice": null,
+    "regularPrice": null,
+    "averageHistoricalPrice": 382.71
+  },
+  {
+    "productName": "Certified AllTrek All Season Tire For Passenger & CUV",
+    "productId": "0043000P",
+    "salePrice": null,
+    "regularPrice": null,
+    "averageHistoricalPrice": 108.87
+  },
+  {
+    "productName": "Sunny Health & Fitness TM10 Under-Desk Remote-Controlled Treadmill",
+    "productId": "1841659P",
+    "salePrice": 399.99,
+    "regularPrice": 549.99,
+    "averageHistoricalPrice": 482.36
+  },
+  {
+    "productName": "Danze Terrazo Single Handle Pull Down Kitchen Faucet, Stainless Steel",
+    "productId": "0633351P",
+    "salePrice": 79.99,
+    "regularPrice": 144.99,
+    "averageHistoricalPrice": 119.78
+  },
+  {
+    "productName": "RCA 4K Ultra HD Google Smart TV, 50-in",
+    "productId": "4994271P",
+    "salePrice": 349.99,
+    "regularPrice": null,
+    "averageHistoricalPrice": null
+  },
+  {
+    "productName": "Magnavox 1080p 43 Inch LED TV, 43-in",
+    "productId": "4993321P",
+    "salePrice": 249.99,
+    "regularPrice": null,
+    "averageHistoricalPrice": 265.77
+  },
+  {
+    "productName": "MotoMaster Hydra Edge Tire for Passenger",
+    "productId": "0042054P",
+    "salePrice": null,
+    "regularPrice": null,
+    "averageHistoricalPrice": 126.29
+  },
+  {
+    "productName": "RCA Full HD Google Smart TV, 43-in",
+    "productId": "4994270P",
+    "salePrice": 249.99,
+    "regularPrice": null,
+    "averageHistoricalPrice": null
+  }
+]
