@@ -1,0 +1,104 @@
+name: Weekly Price Gouge Check
+
+on:
+  schedule:
+    # Runs every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  issues: write
+
+jobs:
+  price-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run price gouge detector
+        id: detect
+        run: |
+          set -o pipefail
+          node dist/index.js 2>&1 | tee output.txt
+
+      - name: Generate summary and create issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const output = fs.readFileSync('output.txt', 'utf-8');
+            const date = new Date().toISOString().split('T')[0];
+
+            // Read augmented deals data if available
+            let deals = [];
+            let gouges = [];
+            try {
+              deals = JSON.parse(fs.readFileSync('data/weekly-deals.json', 'utf-8'));
+              gouges = deals.filter(d => d.isPriceGouge);
+            } catch {
+              // Data file may not exist if scraping failed
+            }
+
+            // Build markdown summary
+            let summary = `## 🔍 Price Gouge Detector — ${date}\n\n`;
+
+            if (gouges.length > 0) {
+              summary += `### ⚠️ ${gouges.length} Potential Price Gouge(s) Detected\n\n`;
+              summary += `| Product | ID | Sale Price | Avg Historical | Diff |\n`;
+              summary += `|---|---|---|---|---|\n`;
+              for (const g of gouges) {
+                const diff = (g.salePrice - g.averageHistoricalPrice).toFixed(2);
+                const ctLink = g.canadianTireUrl ? `[CT](${g.canadianTireUrl})` : '';
+                const tsLink = g.tirespyUrl ? `[TireSpy](${g.tirespyUrl})` : '';
+                const links = [ctLink, tsLink].filter(Boolean).join(' · ');
+                summary += `| ${g.productName.substring(0, 60)} | ${g.productId} | $${g.salePrice.toFixed(2)} | $${g.averageHistoricalPrice.toFixed(2)} | +$${diff} |\n`;
+              }
+              summary += `\n`;
+              for (const g of gouges) {
+                const ctLink = g.canadianTireUrl ? `- [Canadian Tire](${g.canadianTireUrl})` : '';
+                const tsLink = g.tirespyUrl ? `- [TireSpy](${g.tirespyUrl})` : '';
+                summary += `**${g.productName}** (${g.productId})\n${ctLink}\n${tsLink}\n\n`;
+              }
+            } else if (deals.length > 0) {
+              summary += `### ✅ No Price Gouges Detected\n\nAll ${deals.length} sale prices are at or below their historical averages.\n\n`;
+            }
+
+            summary += `### 📊 Summary\n\n`;
+            summary += `- **Total deals scanned**: ${deals.length}\n`;
+            summary += `- **Price gouges found**: ${gouges.length}\n\n`;
+
+            summary += `<details>\n<summary>Full output log</summary>\n\n\`\`\`\n${output}\n\`\`\`\n</details>\n`;
+
+            // Write to workflow summary
+            await core.summary.addRaw(summary).write();
+
+            // Create GitHub issue
+            const issueTitle = gouges.length > 0
+              ? `⚠️ ${gouges.length} price gouge(s) detected — ${date}`
+              : `✅ No price gouges — ${date}`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: summary,
+              labels: ['price-check']
+            });
