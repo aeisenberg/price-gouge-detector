@@ -181,6 +181,7 @@ export async function scrapeWeeklyDeals(): Promise<void> {
   }
 
   const outputPath = path.join(process.cwd(), "data", "weekly-deals.json");
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(deals, null, 2) + "\n");
   console.log(`Saved ${deals.length} deals to ${outputPath}`);
 
