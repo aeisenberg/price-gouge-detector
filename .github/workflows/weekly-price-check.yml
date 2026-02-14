@@ -122,6 +122,7 @@ jobs:
       - name: Compress the data files and add it to a release.
         env:
           ISSUE_NUMBER: ${{ steps.detect.outputs.issueNumber }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           zip -r price-data.zip data/
           # tag the release with the issue number for easy reference
