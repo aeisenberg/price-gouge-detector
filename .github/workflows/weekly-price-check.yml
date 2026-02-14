@@ -87,6 +87,20 @@ jobs:
 
             summary += `<details>\n<summary>Full output log</summary>\n\n\`\`\`\n${output}\n\`\`\`\n</details>\n`;
 
+            // Also include the lowerHistoricalPrices
+            if (gouges.length > 0) {
+              summary += `\n### 🔍 Historical Prices Below Current Sale Price\n\n`;
+              for (const g of gouges) {
+                if (g.lowerHistoricalPrices && g.lowerHistoricalPrices.length > 0) {
+                  summary += `**${g.productName}** (${g.productId}) had the following historical prices below the current sale price of $${g.salePrice.toFixed(2)}:\n\n`;
+                  for (const hp of g.lowerHistoricalPrices) {
+                    summary += `- $${hp.price.toFixed(2)} on ${new Date(hp.date).toLocaleDateString()}\n`;
+                  }
+                  summary += `\n`;
+                }
+              }
+            }
+
             // Write to workflow summary
             await core.summary.addRaw(summary).write();
 
@@ -95,10 +109,19 @@ jobs:
               ? `⚠️ ${gouges.length} price gouge(s) detected — ${date}`
               : `✅ No price gouges — ${date}`;
 
-            await github.rest.issues.create({
+            // Capture the issue number for later use
+            const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: issueTitle,
               body: summary,
               labels: ['price-check']
             });
+            core.setOutput('issueNumber', issue.data.number);
+
+      - name: Compress the data files and add it to the issue.
+        env:
+          ISSUE_NUMBER: ${{ steps.detect.outputs.issueNumber }}
+        run: |
+          zip -r price-data.zip data/
+          gh issue comment $ISSUE_NUMBER --body "Attached is the price data for this week's check." --attach price-data.zip

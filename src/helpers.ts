@@ -37,9 +37,10 @@ export function readJSON<T>(filePath: string): T | undefined{
   return JSON.parse(content) as T;
 }
 
-export function writeJSON<T>(filePath: string, data: T): void {
+export function writeJSON<T>(filePath: string, data: T): string {
   const fullPath = ensureFile(filePath);
   fs.writeFileSync(fullPath, JSON.stringify(data, null, 2) + "\n");
+  return fullPath;
 }
 
 
@@ -52,6 +53,7 @@ export interface WeeklyDeal {
   isPriceGouge?: boolean;
   canadianTireUrl?: string;
   tirespyUrl?: string;
+  lowerHistoricalPrices?: PriceEntry[];
 }
 
 export interface PriceValue {

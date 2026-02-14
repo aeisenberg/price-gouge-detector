@@ -35,6 +35,10 @@ function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
   }
 }
 
+function findPricesLowerThanSalesPrice(salePrice: number, priceHistory: PriceEntry[]): PriceEntry[] {
+  return priceHistory.filter((entry) => entry.price < salePrice);
+}
+
 function padRight(str: string, len: number): string {
   return str.length >= len ? str.substring(0, len) : str + " ".repeat(len - str.length);
 }
@@ -63,6 +67,14 @@ export function computeAveragePrices(): void {
     const variant = history.variants[0];
     const avg = computeTimeWeightedAverage(variant.priceHistory);
     deal.averageHistoricalPrice = avg;
+
+    const lowerPrices = findPricesLowerThanSalesPrice(deal.salePrice ?? 0, variant.priceHistory);
+    if (lowerPrices.length > 0) {
+      console.log(
+        `Note: Found ${lowerPrices.length} historical price(s) below current sale price for ${deal.productName} (${deal.productId}).`
+      );
+    }
+    deal.lowerHistoricalPrices = lowerPrices;
 
     if (avg !== null) {
       augmented++;
