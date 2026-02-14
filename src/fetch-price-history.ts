@@ -1,16 +1,10 @@
-import * as fs from "fs";
 import * as path from "path";
-
-interface WeeklyDeal {
-  productName: string;
-  productId: string;
-  salePrice: number | null;
-  regularPrice: number | null;
-}
+import { type WeeklyDeal, readJSON, writeJSON } from "./helpers";
 
 const TIRESPY_BASE =
   "https://storage.googleapis.com/winged-record-376000.appspot.com/json/en_CA/products";
 
+// Use a consistent set of headers to mimic a real browser and avoid potential blocking by the server.
 const HEADERS: Record<string, string> = {
   "User-Agent":
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:147.0) Gecko/20100101 Firefox/147.0",
@@ -41,12 +35,10 @@ function delay(ms: number): Promise<void> {
 }
 
 export async function fetchPriceHistories(): Promise<void> {
-  const dealsPath = path.join(process.cwd(), "data", "weekly-deals.json");
-  const deals: WeeklyDeal[] = JSON.parse(fs.readFileSync(dealsPath, "utf-8"));
-  const outDir = path.join(process.cwd(), "data", "price-history");
-
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir, { recursive: true });
+  const deals: WeeklyDeal[] | undefined = readJSON("weekly-deals.json");
+  if (!deals) {
+    console.log("No weekly deals found. Please run the scraper first.");
+    return;
   }
 
   let found = 0;
@@ -54,7 +46,6 @@ export async function fetchPriceHistories(): Promise<void> {
 
   for (let i = 0; i < deals.length; i++) {
     const deal = deals[i];
-    const outFile = path.join(outDir, `${deal.productId}.json`);
 
     process.stdout.write(
       `[${i + 1}/${deals.length}] ${deal.productId} ${deal.productName.substring(0, 50)}... `
@@ -63,8 +54,8 @@ export async function fetchPriceHistories(): Promise<void> {
     const data = await fetchPriceHistory(deal.productId);
 
     if (data) {
-      fs.writeFileSync(outFile, JSON.stringify(data, null, 2) + "\n");
-      console.log("✓");
+      const fullPath = writeJSON(path.join("price-history", `${deal.productId}.json`), data);
+      console.log("✓, saved to", fullPath);
       found++;
     } else {
       console.log("✗ not found");

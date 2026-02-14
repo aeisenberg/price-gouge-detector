@@ -1,35 +1,6 @@
 import { chromium, type Page } from "playwright";
-import * as fs from "fs";
-import * as path from "path";
+import { type PriceApiProduct, type SearchApiProduct, type SearchApiResponse, type WeeklyDeal, writeJSON } from "./helpers";
 
-interface WeeklyDeal {
-  productName: string;
-  productId: string;
-  salePrice: number | null;
-  regularPrice: number | null;
-}
-
-interface PriceValue {
-  value: number | null;
-}
-
-interface SearchApiProduct {
-  code?: string;
-  title?: string;
-  currentPrice?: number;
-  originalPrice?: number;
-}
-
-interface PriceApiProduct {
-  code?: string;
-  currentPrice?: PriceValue;
-  originalPrice?: PriceValue;
-  isOnSale?: boolean;
-}
-
-interface SearchApiResponse {
-  products?: SearchApiProduct[];
-}
 
 async function fetchDeals(): Promise<WeeklyDeal[]> {
   const dealsMap = new Map<string, WeeklyDeal>();
@@ -180,9 +151,7 @@ export async function scrapeWeeklyDeals(): Promise<void> {
     throw new Error("No deals found. The page structure may have changed.");
   }
 
-  const outputPath = path.join(process.cwd(), "data", "weekly-deals.json");
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  fs.writeFileSync(outputPath, JSON.stringify(deals, null, 2) + "\n");
-  console.log(`Saved ${deals.length} deals to ${outputPath}`);
+  const fullPath = writeJSON("weekly-deals.json", deals);
+  console.log(`Saved ${deals.length} deals to ${fullPath}`);
 
 }

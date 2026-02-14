@@ -1,32 +1,5 @@
-import * as fs from "fs";
-import * as path from "path";
-
-interface WeeklyDeal {
-  productName: string;
-  productId: string;
-  salePrice: number | null;
-  regularPrice: number | null;
-  averageHistoricalPrice?: number | null;
-  isPriceGouge?: boolean;
-  canadianTireUrl?: string;
-  tirespyUrl?: string;
-}
-
-interface PriceEntry {
-  date: string;
-  price: number;
-}
-
-interface Variant {
-  code: string;
-  priceHistory: PriceEntry[];
-}
-
-interface PriceHistoryFile {
-  code: string;
-  url?: string;
-  variants: Variant[];
-}
+import { join } from "path";
+import { type WeeklyDeal, type PriceHistoryFile, type PriceEntry, ensureFolder, readJSON, writeJSON } from "./helpers";
 
 /**
  * Computes the time-weighted average price from a price history.
@@ -34,8 +7,9 @@ interface PriceHistoryFile {
  * the next entry (or today for the last entry).
  */
 function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
-  if (priceHistory.length === 0) return null;
-  if (priceHistory.length === 1) return priceHistory[0].price;
+  if (priceHistory.length === 0) {
+    return null;
+  }
 
   const sorted = [...priceHistory].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
@@ -54,8 +28,11 @@ function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
     totalDays += days;
   }
 
-  if (totalDays === 0) return sorted[0].price;
-  return Math.round((totalWeightedPrice / totalDays) * 100) / 100;
+  if (totalDays === 0) {
+    return sorted[0].price;
+  } else {
+    return Math.round((totalWeightedPrice / totalDays) * 100) / 100;
+  }
 }
 
 function padRight(str: string, len: number): string {
@@ -63,26 +40,21 @@ function padRight(str: string, len: number): string {
 }
 
 export function computeAveragePrices(): void {
-  const dealsPath = path.join(process.cwd(), "data", "weekly-deals.json");
-  const historyDir = path.join(process.cwd(), "data", "price-history");
+  const historyDir = ensureFolder("price-history");
 
-  const deals: WeeklyDeal[] = JSON.parse(fs.readFileSync(dealsPath, "utf-8"));
+  const deals: WeeklyDeal[] | undefined = readJSON("weekly-deals.json");
+
+  if (!deals) {
+    console.log("No deals found.");
+    return;
+  }
 
   let augmented = 0;
 
   for (const deal of deals) {
-    const historyPath = path.join(historyDir, `${deal.productId}.json`);
+    const history: PriceHistoryFile | undefined = readJSON(join(historyDir, `${deal.productId}.json`));
 
-    if (!fs.existsSync(historyPath)) {
-      deal.averageHistoricalPrice = null;
-      continue;
-    }
-
-    const history: PriceHistoryFile = JSON.parse(
-      fs.readFileSync(historyPath, "utf-8")
-    );
-
-    if (history.variants.length === 0) {
+    if (!history || history.variants.length === 0) {
       deal.averageHistoricalPrice = null;
       continue;
     }
@@ -109,14 +81,9 @@ export function computeAveragePrices(): void {
       deal.isPriceGouge = true;
 
       // Add URLs from price history file
-      const historyPath = path.join(historyDir, `${deal.productId}.json`);
-      if (fs.existsSync(historyPath)) {
-        const history: PriceHistoryFile = JSON.parse(
-          fs.readFileSync(historyPath, "utf-8")
-        );
-        if (history.url) {
-          deal.canadianTireUrl = `https://www.canadiantire.ca${history.url}`;
-        }
+      const history: PriceHistoryFile | undefined = readJSON(join(historyDir, `${deal.productId}.json`));
+      if (history && history.url) {
+        deal.canadianTireUrl = `https://www.canadiantire.ca${history.url}`;
       }
       deal.tirespyUrl = `https://tirespy.ca/product/${deal.productId}`;
 
@@ -154,7 +121,7 @@ export function computeAveragePrices(): void {
     console.log("✅ No price gouges detected — all sale prices are below historical averages.\n");
   }
 
-  fs.writeFileSync(dealsPath, JSON.stringify(deals, null, 2) + "\n");
+  writeJSON("weekly-deals.json", deals);
   console.log(
     `\nAugmented ${augmented} of ${deals.length} deals with average historical price.`
   );
