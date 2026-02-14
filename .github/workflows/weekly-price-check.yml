@@ -74,7 +74,8 @@ jobs:
                 const ctLink = g.canadianTireUrl ? `[CT](${g.canadianTireUrl})` : '';
                 const tsLink = g.tirespyUrl ? `[TireSpy](${g.tirespyUrl})` : '';
                 const links = [ctLink, tsLink].filter(Boolean).join(' · ');
-                summary += `| ${g.productName.substring(0, 60)} | ${g.productId} | $${g.salePrice.toFixed(2)} | $${g.averageHistoricalPrice.toFixed(2)} | +$${diff} |\n`;
+                summary += `| ${g.productName.substring(0, 60)} ${links} | ${g.productId} | $${g.salePrice.toFixed(2)} | $${g.averageHistoricalPrice.toFixed(2)} | +$${diff} |\n`;
+                g.links = links;
               }
               summary += `\n`;
               for (const g of gouges) {
@@ -90,14 +91,12 @@ jobs:
             summary += `- **Total deals scanned**: ${deals.length}\n`;
             summary += `- **Price gouges found**: ${gouges.length}\n\n`;
 
-            summary += `<details>\n<summary>Full output log</summary>\n\n\`\`\`\n${output}\n\`\`\`\n</details>\n`;
-
             // Also include the lowerHistoricalPrices
             if (gouges.length > 0) {
               summary += `\n### 🔍 Historical Prices Below Current Sale Price\n\n`;
               for (const g of gouges) {
                 if (g.lowerHistoricalPrices && g.lowerHistoricalPrices.length > 0) {
-                  summary += `**${g.productName}** (${g.productId}) had the following historical prices below the current sale price of $${g.salePrice.toFixed(2)}:\n\n`;
+                  summary += `**${g.productName}** (${g.productId}) had the following historical prices below the current sale price of $${g.salePrice.toFixed(2)} ${g.links}:\n\n`;
                   for (const hp of g.lowerHistoricalPrices) {
                     summary += `- $${hp.price.toFixed(2)} on ${new Date(hp.date).toLocaleDateString()}\n`;
                   }
@@ -131,6 +130,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: "price-data-${{ steps.generate-summary.outputs.issueNumber }}"
         run: |
+          if [ ! -d "data" ]; then
+            echo "No data directory found, skipping release creation."
+            exit 0
+          fi
+          
           zip -r price-data.zip data/
           # tag the release with the issue number for easy reference
           git config --global user.email "github-actions@github.com"
