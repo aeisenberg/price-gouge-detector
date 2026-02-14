@@ -23,7 +23,10 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        # Use --force because there's a conflict between eslint 10 and
+        # typescript-eslint 8 that causes npm ci to fail. This is a
+        # temporary workaround until we can resolve the version conflict.
+        run: npm ci --force
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
