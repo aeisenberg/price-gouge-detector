@@ -119,9 +119,13 @@ jobs:
             });
             core.setOutput('issueNumber', issue.data.number);
 
-      - name: Compress the data files and add it to the issue.
+      - name: Compress the data files and add it to a release.
         env:
           ISSUE_NUMBER: ${{ steps.detect.outputs.issueNumber }}
         run: |
           zip -r price-data.zip data/
-          gh issue comment $ISSUE_NUMBER --body "Attached is the price data for this week's check." --attach price-data.zip
+          # tag the release with the issue number for easy reference
+          gh release create "price-data-$ISSUE_NUMBER" price-data.zip --title "Price Data for Issue #$ISSUE_NUMBER"
+
+          # Add a comment to the issue that points to the release with the data
+          gh issue comment $ISSUE_NUMBER --body "📁 The price data for this issue has been archived in a release: [Price Data for Issue #$ISSUE_NUMBER](https://github.com/$GITHUB_REPOSITORY/releases/tag/price-data-$ISSUE_NUMBER)"
