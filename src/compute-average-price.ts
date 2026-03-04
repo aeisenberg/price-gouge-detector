@@ -2,11 +2,17 @@ import { join } from "path";
 import { type WeeklyDeal, type PriceHistoryFile, type PriceEntry, ensureFolder, readJSON, writeJSON } from "./helpers";
 
 /**
+ * Minimum percentage above the historical average before a sale price is
+ * flagged as a potential price gouge (e.g. 0.10 = 10%).
+ */
+export const GOUGE_THRESHOLD = 0.10;
+
+/**
  * Computes the time-weighted average price from a price history.
  * Each entry marks the start of a period at that price, lasting until
  * the next entry (or today for the last entry).
  */
-function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
+export function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
   if (priceHistory.length === 0) {
     return null;
   }
@@ -88,7 +94,7 @@ export function computeAveragePrices(): void {
       deal.salePrice !== null &&
       deal.averageHistoricalPrice !== null &&
       deal.averageHistoricalPrice !== undefined &&
-      deal.salePrice > deal.averageHistoricalPrice
+      deal.salePrice > deal.averageHistoricalPrice * (1 + GOUGE_THRESHOLD)
     ) {
       deal.isPriceGouge = true;
 

@@ -11,7 +11,9 @@
     "fetch-history": "npx tsx -e \"import {fetchPriceHistories} from './src/fetch-price-history.ts'; fetchPriceHistories()\"",
     "compute-averages": "npx tsx -e \"import {computeAveragePrices} from './src/compute-average-price.ts'; computeAveragePrices()\"",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "price-gouging",
@@ -27,6 +29,7 @@
     "eslint": "^10.0.0",
     "playwright": "^1.58.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.55.0"
+    "typescript-eslint": "^8.55.0",
+    "vitest": "^4.0.18"
   }
 }
