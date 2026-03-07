@@ -119,13 +119,19 @@ export function computeAveragePrices(): void {
     }
   }
 
+  // Reset derived gouge fields so stale values don't persist across re-runs
+  for (const deal of deals) {
+    deal.isPriceGouge = false;
+    deal.canadianTireUrl = undefined;
+    deal.tirespyUrl = undefined;
+  }
+
   // Flag items where sale price is above the historical average by more than the threshold
   const gouges: WeeklyDeal[] = [];
   for (const deal of deals) {
     if (
       deal.salePrice !== null &&
-      deal.averageHistoricalPrice !== null &&
-      deal.averageHistoricalPrice !== undefined &&
+      deal.averageHistoricalPrice != null &&
       deal.salePrice > deal.averageHistoricalPrice * (1 + GOUGE_THRESHOLD)
     ) {
       deal.isPriceGouge = true;
