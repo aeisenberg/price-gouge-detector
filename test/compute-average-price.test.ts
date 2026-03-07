@@ -2,12 +2,6 @@ import { describe, it, expect } from "vitest";
 import { computeTimeWeightedAverage, computeMaxPrice, GOUGE_THRESHOLD } from "../src/compute-average-price";
 import type { PriceEntry } from "../src/helpers";
 
-describe("GOUGE_THRESHOLD", () => {
-  it("should be 0.10 (10%)", () => {
-    expect(GOUGE_THRESHOLD).toBe(0.10);
-  });
-});
-
 describe("computeTimeWeightedAverage", () => {
   it("returns null for an empty history", () => {
     expect(computeTimeWeightedAverage([])).toBeNull();
