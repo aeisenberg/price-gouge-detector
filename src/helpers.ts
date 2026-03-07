@@ -1,7 +1,7 @@
 import path from "node:path"
 import fs from "node:fs"
 
-const DATA_DIR = path.resolve(__dirname, "../data");
+const DATA_DIR = path.resolve(import.meta.dirname, "../data");
 
 export function ensureFolder(folderPath: string): string {
   const fullPath = path.resolve(DATA_DIR, folderPath);

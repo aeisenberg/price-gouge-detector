@@ -1,5 +1,5 @@
 import { join } from "path";
-import { type WeeklyDeal, type PriceHistoryFile, type PriceEntry, ensureFolder, readJSON, writeJSON } from "./helpers";
+import { type WeeklyDeal, type PriceHistoryFile, type PriceEntry, ensureFolder, readJSON, writeJSON } from "./helpers.js";
 
 /**
  * Computes the time-weighted average price from a price history.

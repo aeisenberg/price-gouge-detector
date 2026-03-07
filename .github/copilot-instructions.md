@@ -35,7 +35,7 @@ npx vitest run -t "test name pattern"
 
 ## Conventions
 
-- **Module system**: CommonJS (`"type": "commonjs"` in package.json, `"module": "Node16"` in tsconfig)
+- **Module system**: ESM (`"type": "module"` in package.json, `"module": "NodeNext"` in tsconfig)
 - **TypeScript**: Strict mode enabled. Target ES2022.
 - **Testing**: Use Vitest with globals enabled — `describe`, `it`, `expect` are available without imports, but explicit imports from `"vitest"` are also fine.
 - **Linting**: ESLint flat config (`eslint.config.mjs`) with typescript-eslint recommended rules.

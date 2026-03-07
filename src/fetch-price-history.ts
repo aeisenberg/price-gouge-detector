@@ -1,5 +1,5 @@
 import * as path from "path";
-import { type WeeklyDeal, readJSON, writeJSON } from "./helpers";
+import { type WeeklyDeal, readJSON, writeJSON } from "./helpers.js";
 
 const TIRESPY_BASE =
   "https://storage.googleapis.com/winged-record-376000.appspot.com/json/en_CA/products";

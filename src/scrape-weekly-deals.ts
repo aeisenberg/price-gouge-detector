@@ -1,5 +1,5 @@
 import { chromium, type Page } from "playwright";
-import { type PriceApiProduct, type SearchApiProduct, type SearchApiResponse, type WeeklyDeal, writeJSON } from "./helpers";
+import { type PriceApiProduct, type SearchApiProduct, type SearchApiResponse, type WeeklyDeal, writeJSON } from "./helpers.js";
 
 
 async function fetchDeals(): Promise<WeeklyDeal[]> {
