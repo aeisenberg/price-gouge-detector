@@ -133,7 +133,7 @@ export function computeAveragePrices(): void {
     console.log("─".repeat(101));
 
     for (const deal of gouges) {
-      const diff = deal.salePrice! - deal.averageHistoricalPrice!;
+      const diff = deal.salePrice! - deal.maxHistoricalPrice!;
       console.log(
         padRight(deal.productName.substring(0, 44), 45) +
           padRight(deal.productId, 12) +

@@ -70,7 +70,7 @@ jobs:
               summary += `| Product | ID | Sale Price | Max Historical | Avg Historical | Diff |\n`;
               summary += `|---|---|---|---|---|---|\n`;
               for (const g of gouges) {
-                const diff = (g.salePrice - g.averageHistoricalPrice).toFixed(2);
+                const diff = (g.salePrice - g.maxHistoricalPrice).toFixed(2);
                 const ctLink = g.canadianTireUrl ? `[CT](${g.canadianTireUrl})` : '';
                 const tsLink = g.tirespyUrl ? `[TireSpy](${g.tirespyUrl})` : '';
                 const links = [ctLink, tsLink].filter(Boolean).join(' · ');
