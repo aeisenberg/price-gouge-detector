@@ -14,6 +14,8 @@ npm run test         # Run full test suite (vitest)
 npm run test:watch   # Run tests in watch mode
 npm run lint         # Run ESLint
 npm run lint:fix     # Auto-fix lint issues
+npm run format       # Format code with Prettier
+npm run format:check # Check formatting without writing
 ```
 
 Run a single test file:
@@ -39,3 +41,4 @@ npx vitest run -t "test name pattern"
 - **TypeScript**: Strict mode enabled. Target ES2022.
 - **Testing**: Use Vitest with globals enabled — `describe`, `it`, `expect` are available without imports, but explicit imports from `"vitest"` are also fine.
 - **Linting**: ESLint flat config (`eslint.config.mjs`) with typescript-eslint recommended rules.
+- **Formatting**: Prettier for code formatting. Run `npm run format:check` to verify.
