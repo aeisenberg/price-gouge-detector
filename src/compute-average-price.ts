@@ -17,10 +17,15 @@ export const GOUGE_THRESHOLD = 0.1;
 /**
  * Computes the time-weighted average price from a price history.
  * Each entry marks the start of a period at that price, lasting until
- * the next entry (or today for the last entry).
+ * the next entry (or {@link now} for the last entry).
+ *
+ * @param priceHistory - Array of price entries with date and price.
+ * @param now - Optional reference date for the last period's end.
+ *              Defaults to the current date.
  */
 export function computeTimeWeightedAverage(
   priceHistory: PriceEntry[],
+  now: Date = new Date(),
 ): number | null {
   if (priceHistory.length === 0) {
     return null;
@@ -29,8 +34,6 @@ export function computeTimeWeightedAverage(
   const sorted = [...priceHistory].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
   );
-
-  const now = new Date();
   let totalWeightedPrice = 0;
   let totalDays = 0;
 
