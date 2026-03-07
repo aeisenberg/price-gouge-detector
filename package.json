@@ -10,8 +10,12 @@
     "scrape": "npx tsx -e \"import {scrapeWeeklyDeals} from './src/scrape-weekly-deals.ts'; scrapeWeeklyDeals()\"",
     "fetch-history": "npx tsx -e \"import {fetchPriceHistories} from './src/fetch-price-history.ts'; fetchPriceHistories()\"",
     "compute-averages": "npx tsx -e \"import {computeAveragePrices} from './src/compute-average-price.ts'; computeAveragePrices()\"",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [
     "price-gouging",
@@ -26,7 +30,9 @@
     "@types/node": "^25.3.3",
     "eslint": "^10.0.2",
     "playwright": "^1.58.2",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.56.1",
+    "vitest": "^4.0.18"
   }
 }
