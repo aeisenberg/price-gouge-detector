@@ -27,7 +27,9 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
     try {
       if (url.includes("/v1/search/")) {
         const json = (await response.json()) as SearchApiResponse;
-        if (json.products) searchProducts.push(...json.products);
+        if (json.products) {
+          searchProducts.push(...json.products);
+        }
       }
     } catch {
       // Response may not be parseable

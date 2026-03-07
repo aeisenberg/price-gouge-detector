@@ -12,14 +12,16 @@ import {
  * Minimum percentage above the historical average before a sale price is
  * flagged as a potential price gouge (e.g. 0.10 = 10%).
  */
-export const GOUGE_THRESHOLD = 0.10;
+export const GOUGE_THRESHOLD = 0.1;
 
 /**
  * Computes the time-weighted average price from a price history.
  * Each entry marks the start of a period at that price, lasting until
  * the next entry (or today for the last entry).
  */
-export function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
+export function computeTimeWeightedAverage(
+  priceHistory: PriceEntry[],
+): number | null {
   if (priceHistory.length === 0) {
     return null;
   }
@@ -167,10 +169,11 @@ export function computeAveragePrices(): void {
     console.log("─".repeat(101));
     console.log(
       `Found ${gouges.length} item(s) on "sale" more than ${GOUGE_THRESHOLD * 100}% above their historical average.\n
-    `);
+    `,
+    );
   } else {
     console.log(
-      "✅ No price gouges detected — all sale prices are within the acceptable range.\n"
+      "✅ No price gouges detected — all sale prices are within the acceptable range.\n",
     );
   }
 

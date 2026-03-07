@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { computeTimeWeightedAverage, computeMaxPrice, GOUGE_THRESHOLD } from "../src/compute-average-price";
+import {
+  computeTimeWeightedAverage,
+  computeMaxPrice,
+  GOUGE_THRESHOLD,
+} from "../src/compute-average-price";
 import type { PriceEntry } from "../src/helpers";
 
 describe("computeTimeWeightedAverage", () => {
@@ -49,7 +53,9 @@ describe("computeTimeWeightedAverage", () => {
       { date: "2025-01-01", price: 2.0 },
       { date: "2025-06-01", price: 10.0 },
     ];
-    expect(computeTimeWeightedAverage(history)).toBe(computeTimeWeightedAverage(historySorted));
+    expect(computeTimeWeightedAverage(history)).toBe(
+      computeTimeWeightedAverage(historySorted),
+    );
   });
 });
 
@@ -102,7 +108,7 @@ describe("gouge detection with threshold", () => {
   it("is flagged when sale price exceeds the threshold", () => {
     // Sale price more than 10% above average
     const avg = 6.08;
-    const salePrice = 6.90; // ~13.5% above avg
+    const salePrice = 6.9; // ~13.5% above avg
     const isGouge = salePrice > avg * (1 + GOUGE_THRESHOLD);
     expect(isGouge).toBe(true);
   });
