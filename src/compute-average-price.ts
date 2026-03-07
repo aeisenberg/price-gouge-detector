@@ -1,5 +1,12 @@
 import { join } from "path";
-import { type WeeklyDeal, type PriceHistoryFile, type PriceEntry, ensureFolder, readJSON, writeJSON } from "./helpers";
+import {
+  type WeeklyDeal,
+  type PriceHistoryFile,
+  type PriceEntry,
+  ensureFolder,
+  readJSON,
+  writeJSON,
+} from "./helpers";
 
 /**
  * Computes the time-weighted average price from a price history.
@@ -12,7 +19,7 @@ function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
   }
 
   const sorted = [...priceHistory].sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
   );
 
   const now = new Date();
@@ -42,12 +49,17 @@ function computeMaxPrice(priceHistory: PriceEntry[]): number | null {
   return Math.max(...priceHistory.map((e) => e.price));
 }
 
-function findPricesLowerThanSalesPrice(salePrice: number, priceHistory: PriceEntry[]): PriceEntry[] {
+function findPricesLowerThanSalesPrice(
+  salePrice: number,
+  priceHistory: PriceEntry[],
+): PriceEntry[] {
   return priceHistory.filter((entry) => entry.price < salePrice);
 }
 
 function padRight(str: string, len: number): string {
-  return str.length >= len ? str.substring(0, len) : str + " ".repeat(len - str.length);
+  return str.length >= len
+    ? str.substring(0, len)
+    : str + " ".repeat(len - str.length);
 }
 
 export function computeAveragePrices(): void {
@@ -63,7 +75,9 @@ export function computeAveragePrices(): void {
   let augmented = 0;
 
   for (const deal of deals) {
-    const history: PriceHistoryFile | undefined = readJSON(join(historyDir, `${deal.productId}.json`));
+    const history: PriceHistoryFile | undefined = readJSON(
+      join(historyDir, `${deal.productId}.json`),
+    );
 
     if (!history || history.variants.length === 0) {
       deal.averageHistoricalPrice = null;
@@ -78,10 +92,13 @@ export function computeAveragePrices(): void {
     const max = computeMaxPrice(variant.priceHistory);
     deal.maxHistoricalPrice = max;
 
-    const lowerPrices = findPricesLowerThanSalesPrice(deal.salePrice ?? 0, variant.priceHistory);
+    const lowerPrices = findPricesLowerThanSalesPrice(
+      deal.salePrice ?? 0,
+      variant.priceHistory,
+    );
     if (lowerPrices.length > 0) {
       console.log(
-        `Note: Found ${lowerPrices.length} historical price(s) below current sale price for ${deal.productName} (${deal.productId}).`
+        `Note: Found ${lowerPrices.length} historical price(s) below current sale price for ${deal.productName} (${deal.productId}).`,
       );
     }
     deal.lowerHistoricalPrices = lowerPrices;
@@ -103,7 +120,9 @@ export function computeAveragePrices(): void {
       deal.isPriceGouge = true;
 
       // Add URLs from price history file
-      const history: PriceHistoryFile | undefined = readJSON(join(historyDir, `${deal.productId}.json`));
+      const history: PriceHistoryFile | undefined = readJSON(
+        join(historyDir, `${deal.productId}.json`),
+      );
       if (history && history.url) {
         deal.canadianTireUrl = `https://www.canadiantire.ca${history.url}`;
       }
@@ -122,7 +141,7 @@ export function computeAveragePrices(): void {
         padRight("Sale", 11) +
         padRight("Max", 11) +
         padRight("Avg", 11) +
-        "Diff"
+        "Diff",
     );
     console.log("─".repeat(101));
 
@@ -134,19 +153,23 @@ export function computeAveragePrices(): void {
           padRight(`$${deal.salePrice!.toFixed(2)}`, 11) +
           padRight(`$${deal.maxHistoricalPrice!.toFixed(2)}`, 11) +
           padRight(`$${deal.averageHistoricalPrice!.toFixed(2)}`, 11) +
-          `+$${diff.toFixed(2)}`
+          `+$${diff.toFixed(2)}`,
       );
       console.log(`  CT:      ${deal.canadianTireUrl ?? "N/A"}`);
       console.log(`  TireSpy: ${deal.tirespyUrl}`);
     }
     console.log("─".repeat(101));
-    console.log(`Found ${gouges.length} item(s) on "sale" above their historical maximum.\n`);
+    console.log(
+      `Found ${gouges.length} item(s) on "sale" above their historical maximum.\n`,
+    );
   } else {
-    console.log("✅ No price gouges detected — all sale prices are at or below their historical maximum.\n");
+    console.log(
+      "✅ No price gouges detected — all sale prices are at or below their historical maximum.\n",
+    );
   }
 
   writeJSON("weekly-deals.json", deals);
   console.log(
-    `\nAugmented ${augmented} of ${deals.length} deals with average historical price.`
+    `\nAugmented ${augmented} of ${deals.length} deals with average historical price.`,
   );
 }

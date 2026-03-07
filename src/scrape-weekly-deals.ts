@@ -1,6 +1,11 @@
 import { chromium, type Page } from "playwright";
-import { type PriceApiProduct, type SearchApiProduct, type SearchApiResponse, type WeeklyDeal, writeJSON } from "./helpers";
-
+import {
+  type PriceApiProduct,
+  type SearchApiProduct,
+  type SearchApiResponse,
+  type WeeklyDeal,
+  writeJSON,
+} from "./helpers";
 
 async function fetchDeals(): Promise<WeeklyDeal[]> {
   const dealsMap = new Map<string, WeeklyDeal>();
@@ -32,7 +37,7 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
   console.log("Loading weekly deals page...");
   await page.goto(
     "https://www.canadiantire.ca/en/promotions/weekly-deals.html",
-    { waitUntil: "domcontentloaded", timeout: 60000 }
+    { waitUntil: "domcontentloaded", timeout: 60000 },
   );
 
   console.log("Waiting for products to load...");
@@ -43,9 +48,7 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
 
   // Build deals from search API data (has names + IDs)
   if (searchProducts.length > 0) {
-    console.log(
-      `Captured ${searchProducts.length} products from search API.`
-    );
+    console.log(`Captured ${searchProducts.length} products from search API.`);
     for (const product of searchProducts) {
       const id = product.code ?? "Unknown";
       dealsMap.set(id, {
@@ -66,7 +69,7 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
     for (let i = 0; i < allCodes.length; i += batchSize) {
       const batch = allCodes.slice(i, i + batchSize);
       console.log(
-        `Fetching prices for products ${i + 1}–${i + batch.length}...`
+        `Fetching prices for products ${i + 1}–${i + batch.length}...`,
       );
 
       const batchPrices = await page.evaluate(async (codes: string[]) => {
@@ -77,8 +80,7 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
-              "Ocp-Apim-Subscription-Key":
-                "c01ef3612328420c9f5cd9277e815a0e",
+              "Ocp-Apim-Subscription-Key": "c01ef3612328420c9f5cd9277e815a0e",
               bannerid: "CTR",
               baseSiteId: "CTR",
               "x-web-host": "www.canadiantire.ca",
@@ -89,7 +91,7 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
               products: codes.map((code) => ({ code, brand: "" })),
               skus: [],
             }),
-          }
+          },
         );
         const json = await resp.json();
         return json.products ?? [];
@@ -107,7 +109,7 @@ async function fetchDeals(): Promise<WeeklyDeal[]> {
   } else {
     // Fallback: scrape the rendered DOM
     console.log("Falling back to DOM scraping...");
-    const cards = await page.$$('.nl-product__grid-items .nl-product__content');
+    const cards = await page.$$(".nl-product__grid-items .nl-product__content");
     for (const card of cards) {
       const name = await card
         .$eval(".nl-product-card__title", (el) => el.textContent?.trim())
@@ -153,5 +155,4 @@ export async function scrapeWeeklyDeals(): Promise<void> {
 
   const fullPath = writeJSON("weekly-deals.json", deals);
   console.log(`Saved ${deals.length} deals to ${fullPath}`);
-
 }
