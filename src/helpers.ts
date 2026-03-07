@@ -1,7 +1,7 @@
-import path from "node:path"
-import fs from "node:fs"
+import path from "node:path";
+import fs from "node:fs";
 
-const DATA_DIR = path.resolve(__dirname, "../data");
+const DATA_DIR = path.resolve(import.meta.dirname, "../data");
 
 export function ensureFolder(folderPath: string): string {
   const fullPath = path.resolve(DATA_DIR, folderPath);
@@ -28,7 +28,7 @@ export function ensureFile(filePath: string, contents?: string): string {
   return fullPath;
 }
 
-export function readJSON<T>(filePath: string): T | undefined{
+export function readJSON<T>(filePath: string): T | undefined {
   const fullPath = path.resolve(DATA_DIR, filePath);
   if (!fs.existsSync(fullPath)) {
     return undefined;
@@ -42,7 +42,6 @@ export function writeJSON<T>(filePath: string, data: T): string {
   fs.writeFileSync(fullPath, JSON.stringify(data, null, 2) + "\n");
   return fullPath;
 }
-
 
 export interface WeeklyDeal {
   productName: string;

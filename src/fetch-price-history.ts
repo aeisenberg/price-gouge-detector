@@ -1,5 +1,5 @@
 import * as path from "path";
-import { type WeeklyDeal, readJSON, writeJSON } from "./helpers";
+import { type WeeklyDeal, readJSON, writeJSON } from "./helpers.js";
 
 const TIRESPY_BASE =
   "https://storage.googleapis.com/winged-record-376000.appspot.com/json/en_CA/products";
@@ -48,13 +48,16 @@ export async function fetchPriceHistories(): Promise<void> {
     const deal = deals[i];
 
     process.stdout.write(
-      `[${i + 1}/${deals.length}] ${deal.productId} ${deal.productName.substring(0, 50)}... `
+      `[${i + 1}/${deals.length}] ${deal.productId} ${deal.productName.substring(0, 50)}... `,
     );
 
     const data = await fetchPriceHistory(deal.productId);
 
     if (data) {
-      const fullPath = writeJSON(path.join("price-history", `${deal.productId}.json`), data);
+      const fullPath = writeJSON(
+        path.join("price-history", `${deal.productId}.json`),
+        data,
+      );
       console.log("✓, saved to", fullPath);
       found++;
     } else {
@@ -69,6 +72,6 @@ export async function fetchPriceHistories(): Promise<void> {
   }
 
   console.log(
-    `\nDone. Found: ${found}, Not found: ${notFound}, Total: ${deals.length}`
+    `\nDone. Found: ${found}, Not found: ${notFound}, Total: ${deals.length}`,
   );
 }
