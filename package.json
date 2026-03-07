@@ -10,10 +10,10 @@
     "scrape": "npx tsx -e \"import {scrapeWeeklyDeals} from './src/scrape-weekly-deals.ts'; scrapeWeeklyDeals()\"",
     "fetch-history": "npx tsx -e \"import {fetchPriceHistories} from './src/fetch-price-history.ts'; fetchPriceHistories()\"",
     "compute-averages": "npx tsx -e \"import {computeAveragePrices} from './src/compute-average-price.ts'; computeAveragePrices()\"",
-    "test": "vitest run --passWithNoTests",
-    "test:watch": "vitest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"

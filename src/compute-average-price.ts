@@ -9,11 +9,24 @@ import {
 } from "./helpers.js";
 
 /**
+ * Minimum percentage above the historical average before a sale price is
+ * flagged as a potential price gouge (e.g. 0.10 = 10%).
+ */
+export const GOUGE_THRESHOLD = 0.1;
+
+/**
  * Computes the time-weighted average price from a price history.
  * Each entry marks the start of a period at that price, lasting until
- * the next entry (or today for the last entry).
+ * the next entry (or {@link now} for the last entry).
+ *
+ * @param priceHistory - Array of price entries with date and price.
+ * @param now - Optional reference date for the last period's end.
+ *              Defaults to the current date.
  */
-function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
+export function computeTimeWeightedAverage(
+  priceHistory: PriceEntry[],
+  now: Date = new Date(),
+): number | null {
   if (priceHistory.length === 0) {
     return null;
   }
@@ -21,8 +34,6 @@ function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
   const sorted = [...priceHistory].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
   );
-
-  const now = new Date();
   let totalWeightedPrice = 0;
   let totalDays = 0;
 
@@ -42,7 +53,7 @@ function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number | null {
   }
 }
 
-function computeMaxPrice(priceHistory: PriceEntry[]): number | null {
+export function computeMaxPrice(priceHistory: PriceEntry[]): number | null {
   if (priceHistory.length === 0) {
     return null;
   }
@@ -108,14 +119,20 @@ export function computeAveragePrices(): void {
     }
   }
 
-  // Flag items where sale price is above the historical maximum and print results
+  // Reset derived gouge fields so stale values don't persist across re-runs
+  for (const deal of deals) {
+    deal.isPriceGouge = false;
+    deal.canadianTireUrl = undefined;
+    deal.tirespyUrl = undefined;
+  }
+
+  // Flag items where sale price is above the historical average by more than the threshold
   const gouges: WeeklyDeal[] = [];
   for (const deal of deals) {
     if (
       deal.salePrice !== null &&
-      deal.maxHistoricalPrice !== null &&
-      deal.maxHistoricalPrice !== undefined &&
-      deal.salePrice > deal.maxHistoricalPrice
+      deal.averageHistoricalPrice != null &&
+      deal.salePrice > deal.averageHistoricalPrice * (1 + GOUGE_THRESHOLD)
     ) {
       deal.isPriceGouge = true;
 
@@ -160,11 +177,11 @@ export function computeAveragePrices(): void {
     }
     console.log("─".repeat(101));
     console.log(
-      `Found ${gouges.length} item(s) on "sale" above their historical maximum.\n`,
+      `Found ${gouges.length} item(s) on "sale" more than ${GOUGE_THRESHOLD * 100}% above their historical average.\n`,
     );
   } else {
     console.log(
-      "✅ No price gouges detected — all sale prices are at or below their historical maximum.\n",
+      "✅ No price gouges detected — all sale prices are within the acceptable range.\n",
     );
   }
 

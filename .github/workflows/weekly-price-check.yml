@@ -84,7 +84,7 @@ jobs:
                 summary += `**${g.productName}** (${g.productId})\n${ctLink}\n${tsLink}\n\n`;
               }
             } else if (deals.length > 0) {
-              summary += `### ✅ No Price Gouges Detected\n\nAll ${deals.length} sale prices are at or below their historical maximum.\n\n`;
+              summary += `### ✅ No Price Gouges Detected\n\nAll ${deals.length} sale prices are within the acceptable range of their historical averages.\n\n`;
             }
 
             summary += `### 📊 Summary\n\n`;
