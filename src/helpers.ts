@@ -50,6 +50,7 @@ export interface WeeklyDeal {
   salePrice: number | null;
   regularPrice: number | null;
   averageHistoricalPrice?: number | null;
+  maxHistoricalPrice?: number | null;
   isPriceGouge?: boolean;
   canadianTireUrl?: string;
   tirespyUrl?: string;
