@@ -168,8 +168,7 @@ export function computeAveragePrices(): void {
     }
     console.log("─".repeat(101));
     console.log(
-      `Found ${gouges.length} item(s) on "sale" more than ${GOUGE_THRESHOLD * 100}% above their historical average.\n
-    `,
+      `Found ${gouges.length} item(s) on "sale" more than ${GOUGE_THRESHOLD * 100}% above their historical average.\n`,
     );
   } else {
     console.log(
