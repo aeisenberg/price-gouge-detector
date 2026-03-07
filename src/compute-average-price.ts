@@ -6,7 +6,7 @@ import {
   ensureFolder,
   readJSON,
   writeJSON,
-} from "./helpers";
+} from "./helpers.js";
 
 /**
  * Computes the time-weighted average price from a price history.

@@ -5,7 +5,7 @@ import {
   type SearchApiResponse,
   type WeeklyDeal,
   writeJSON,
-} from "./helpers";
+} from "./helpers.js";
 
 async function fetchDeals(): Promise<WeeklyDeal[]> {
   const dealsMap = new Map<string, WeeklyDeal>();

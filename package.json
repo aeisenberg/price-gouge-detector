@@ -24,7 +24,7 @@
   ],
   "author": "Andrew Eisenberg <andrew.eisenberg@gmail.com>",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.3.3",
