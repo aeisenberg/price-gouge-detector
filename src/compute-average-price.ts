@@ -41,6 +41,13 @@ export function computeTimeWeightedAverage(priceHistory: PriceEntry[]): number |
   }
 }
 
+export function computeMaxPrice(priceHistory: PriceEntry[]): number | null {
+  if (priceHistory.length === 0) {
+    return null;
+  }
+  return Math.max(...priceHistory.map((e) => e.price));
+}
+
 function findPricesLowerThanSalesPrice(salePrice: number, priceHistory: PriceEntry[]): PriceEntry[] {
   return priceHistory.filter((entry) => entry.price < salePrice);
 }
@@ -74,6 +81,9 @@ export function computeAveragePrices(): void {
     const avg = computeTimeWeightedAverage(variant.priceHistory);
     deal.averageHistoricalPrice = avg;
 
+    const max = computeMaxPrice(variant.priceHistory);
+    deal.maxHistoricalPrice = max;
+
     const lowerPrices = findPricesLowerThanSalesPrice(deal.salePrice ?? 0, variant.priceHistory);
     if (lowerPrices.length > 0) {
       console.log(
@@ -87,7 +97,7 @@ export function computeAveragePrices(): void {
     }
   }
 
-  // Flag items where sale price is above average and print results
+  // Flag items where sale price is above the historical average by more than the threshold
   const gouges: WeeklyDeal[] = [];
   for (const deal of deals) {
     if (
@@ -111,15 +121,16 @@ export function computeAveragePrices(): void {
 
   if (gouges.length > 0) {
     console.log("⚠️  POTENTIAL PRICE GOUGES DETECTED");
-    console.log("═".repeat(90));
+    console.log("═".repeat(101));
     console.log(
       padRight("Product", 45) +
         padRight("ID", 12) +
         padRight("Sale", 11) +
+        padRight("Max", 11) +
         padRight("Avg", 11) +
         "Diff"
     );
-    console.log("─".repeat(90));
+    console.log("─".repeat(101));
 
     for (const deal of gouges) {
       const diff = deal.salePrice! - deal.averageHistoricalPrice!;
@@ -127,16 +138,17 @@ export function computeAveragePrices(): void {
         padRight(deal.productName.substring(0, 44), 45) +
           padRight(deal.productId, 12) +
           padRight(`$${deal.salePrice!.toFixed(2)}`, 11) +
+          padRight(`$${deal.maxHistoricalPrice!.toFixed(2)}`, 11) +
           padRight(`$${deal.averageHistoricalPrice!.toFixed(2)}`, 11) +
           `+$${diff.toFixed(2)}`
       );
       console.log(`  CT:      ${deal.canadianTireUrl ?? "N/A"}`);
       console.log(`  TireSpy: ${deal.tirespyUrl}`);
     }
-    console.log("─".repeat(90));
-    console.log(`Found ${gouges.length} item(s) on "sale" above their historical average.\n`);
+    console.log("─".repeat(101));
+    console.log(`Found ${gouges.length} item(s) on "sale" more than ${GOUGE_THRESHOLD * 100}% above their historical average.\n`);
   } else {
-    console.log("✅ No price gouges detected — all sale prices are below historical averages.\n");
+    console.log("✅ No price gouges detected — all sale prices are within the acceptable range.\n");
   }
 
   writeJSON("weekly-deals.json", deals);
