@@ -1,3 +1,5 @@
+xxx
+
 # Price Gouge Detector
 
 A TypeScript CLI tool that detects price gouging at Canadian Tire by comparing current "sale" prices against historical price data from [TireSpy](https://tirespy.com). If a sale price isn't actually lower than the product's historical average, it gets flagged as a potential price gouge.
